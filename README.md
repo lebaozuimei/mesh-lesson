@@ -1,6 +1,6 @@
 # mesh-lesson
 
-usage
+##usage
 
 cd build  
 cmake ..  
