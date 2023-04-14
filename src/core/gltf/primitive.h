@@ -6,6 +6,7 @@
 #include <nlohmann/json.hpp>
 
 #include "../basetypes.h"
+#include "../math/point3.h"
 #include "../../utils/io_util.h"
 #include "buffer_view.h"
 #include "accessor.h"
@@ -487,6 +488,12 @@ public:
         }
     }
 
+    void add_point(const Point3 &p) {
+        positions.push_back(p.x);
+        positions.push_back(p.y);
+        positions.push_back(p.z);
+    }
+
     void add_point(double x, double y, double z) {
         positions.push_back(x);
         positions.push_back(y);
@@ -500,6 +507,16 @@ public:
         indices.push_back(i);
         indices.push_back(k);
         indices.push_back(t);
+    }
+
+    void add_triangle(int i, int j, int k) {
+        indices.push_back(i);
+        indices.push_back(j);
+        indices.push_back(k);
+    }
+
+    int last_point_index() {
+        return positions.size() / 3 - 1;
     }
 
 protected:

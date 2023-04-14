@@ -266,7 +266,7 @@ public:
     friend Matrix4 operator+(const Matrix4 &a, const Matrix4 &b) {
         Matrix4 mat;
         for (int i = 0; i < 16; ++i) {
-            mat.data[i] = a.data[i] + b.makedata[i];
+            mat.data[i] = a.data[i] + b.data[i];
         }
         return mat;
     }
