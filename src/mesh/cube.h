@@ -12,7 +12,9 @@ class MeshCube : public Primitive {
 
 public:
 
-    int generate(const Point3 &center, double extend_x, double extend_y, double extend_z) {
+    int generate(const Point3 &center, 
+        double extend_x, double extend_y, double extend_z) {
+        
         double hw = extend_x * 0.5;
         double hh = extend_y * 0.5;
         double hd = extend_z * 0.5;

@@ -3,7 +3,6 @@
 
 #include "cgal_base.h"
 
-#include <CGAL/Exact_predicates_inexact_constructions_kernel.h>
 #include <CGAL/Polygon_mesh_processing/corefinement.h>
 #include <CGAL/Polygon_mesh_processing/remesh.h>
 #include <CGAL/Polygon_mesh_processing/repair.h>
@@ -58,6 +57,52 @@ public:
 
         if (valid) {
             _surface_mesh_to_gltf_primitive(surface_mesh_out, out);
+        } else {
+            return -1;
+        }
+        return 0;
+    }
+
+    // int corefine_union(const Primitive &main, const Primitive &aux, Primitive &out) {
+    //     SurfaceMesh surface_mesh_main;
+    //     SurfaceMesh surface_mesh_aux;
+    //     _gltf_primitive_to_surface_mesh(main, surface_mesh_main);
+    //     _gltf_primitive_to_surface_mesh(aux, surface_mesh_aux);\
+
+    //     CGAL::Polygon_mesh_processing::stitch_borders(surface_mesh_main);
+    //     CGAL::Polygon_mesh_processing::stitch_borders(surface_mesh_aux);
+
+    //     SurfaceMesh surface_mesh_out;
+    //     bool valid = CGAL::Polygon_mesh_processing::corefine_and_compute_union(
+    //         surface_mesh_main, surface_mesh_aux, surface_mesh_out
+    //     );
+
+    //     if (valid) {
+    //         _surface_mesh_to_gltf_primitive(surface_mesh_out, out);
+    //     } else {
+    //         return -1;
+    //     }
+    //     return 0;
+    // }
+
+    int clip(const Primitive &main, const Primitive &aux, Primitive &out, bool clip_volume = false) {
+        SurfaceMesh surface_mesh_main;
+        SurfaceMesh surface_mesh_aux;
+        _gltf_primitive_to_surface_mesh(main, surface_mesh_main);
+        _gltf_primitive_to_surface_mesh(aux, surface_mesh_aux);
+
+        // DEBUG(CGAL::Polygon_mesh_processing::does_bound_a_volume(surface_mesh_aux));
+        CGAL::Polygon_mesh_processing::reverse_face_orientations(surface_mesh_aux);
+
+        bool valid = CGAL::Polygon_mesh_processing::clip(
+            surface_mesh_main,
+            surface_mesh_aux,
+            params::clip_volume(clip_volume), // parameters for surface_mesh_main
+            params::all_default() // parameters for surface_mesh_aux
+        );
+
+        if (valid) {
+            _surface_mesh_to_gltf_primitive(surface_mesh_main, out);
         } else {
             return -1;
         }

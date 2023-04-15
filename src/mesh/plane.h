@@ -4,6 +4,7 @@
 #include "../core/basetypes.h"
 #include "../core/gltf/primitive.h"
 #include "../core/math/point3.h"
+#include "../core/math/vector3.h"
 #include "../utils/io_util.h"
 
 namespace mesh {

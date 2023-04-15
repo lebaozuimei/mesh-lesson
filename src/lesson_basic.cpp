@@ -6,31 +6,6 @@
 
 #include <CGAL/Surface_mesh.h>
 
-
-
-// typedef CGAL::Exact_predicates_inexact_constructions_kernel Kernel;
-// typedef CGAL::Exact_predicates_exact_constructions_kernel Kernel;
-
-// typedef Kernel::Point_2 Point_2;
-
-// typedef CGAL::Surface_mesh<Kernel::Point_3> SurfaceMesh;
-
-// typedef boost::graph_traits<SurfaceMesh>::vertex_descriptor VertexDescriptor;
-// typedef SurfaceMesh::Vertex_index VertexIndex;
-// typedef boost::graph_traits<SurfaceMesh>::vertex_iterator VertexIterator;
-
-// typedef boost::graph_traits<SurfaceMesh>::edge_descriptor EdgeDescriptor;
-// typedef boost::graph_traits<SurfaceMesh>::halfedge_descriptor HalfedgeDescriptor;
-// typedef boost::graph_traits<SurfaceMesh>::face_descriptor FaceDescriptor;
-
-// typedef CGAL::Out_edge_iterator<SurfaceMesh> OutEdgeIterator;
-
-// int main() {
-//     double a;
-//     std::cin >> a;
-//     std::cout << ((a / 0.9 == 0.7) ? "true" : "false") << std::endl;
-// }
-
 int test_descriptor() {
     typedef CGAL::Simple_cartesian<double> Kernel;
     typedef CGAL::Surface_mesh<Kernel::Point_3> SurfaceMesh;

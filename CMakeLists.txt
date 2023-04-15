@@ -16,3 +16,6 @@ target_link_libraries(lesson_basic CGAL::CGAL ${Boost_SYSTEM_LIBRARY})
 
 add_executable(lesson_simplification src/lesson_simplification.cpp)
 target_link_libraries(lesson_simplification CGAL::CGAL ${Boost_SYSTEM_LIBRARY})
+
+add_executable(lesson_clip src/lesson_clip.cpp)
+target_link_libraries(lesson_clip CGAL::CGAL ${Boost_SYSTEM_LIBRARY})
